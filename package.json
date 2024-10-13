@@ -4,20 +4,23 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon app.js"
+    "node": "node backend/app.js",
+    "start": "nodemon backend/app.js",
+    "server": "concurrently \" npm run start\" \"cd client && npm run dev\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "ejs": "^3.1.10",
     "express": "^4.21.0",
+    "express-async-handler": "^1.2.0",
     "method-override": "^3.0.0",
-    "mongoose": "^8.7.0"
+    "mongoose": "^8.7.0",
+    "react-router-dom": "^6.27.0"
   },
   "devDependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "concurrently": "^9.0.1"
   }
 }
