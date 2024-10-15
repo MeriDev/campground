@@ -1,30 +1,12 @@
-import axios from 'axios';
-
-import { useState, useEffect } from 'react';
-
 const Home = () => {
-  const [campgrounds, setCampgrounds] = useState([]);
-  // const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const getCampgrounds = async () => {
-      try {
-        const res = await axios.get('api/campgrounds');
-        const data = await res.data;
-        setCampgrounds(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getCampgrounds();
-  }, []);
-
   return (
-    <div>
-      {campgrounds &&
-        campgrounds.map(campground => (
-          <div key={campgrounds.id}>{campground.title}</div>
-        ))}
+    <div
+      className="bg-[url('./assets/camp.jpg')] h-[calc(100vh-36px)] bg-cover bg-no-repeat bg-[left_calc(50%)_bottom_calc(40%)]
+      relative -z-10"
+    >
+      <div className="flex flex-col items-center justify-center absolute left-[50%] top-[50%] translate-x-[-50%]">
+        <h1 className="text-3xl"> Hello Campers</h1>
+      </div>
     </div>
   );
 };

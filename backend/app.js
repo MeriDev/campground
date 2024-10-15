@@ -17,50 +17,52 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 
 // @desc get campgrounds
-// @eoute GET /campgrounds
+// @eoute GET api/campgrounds
 // @access Private
 app.get(
   '/api/campgrounds',
   asyncHandler(async (req, res) => {
     const campgrounds = await Campground.find({});
-    console.log(campgrounds);
 
     res.status(200).json(campgrounds);
   })
 );
 
-app.get('/campgrounds/new', (req, res) => {
-  // res.render('campgrounds/new');
+// @desc Fetch campground
+// @eoute Get /campgrounds/id
+// @access Private
+app.get('/api/campgrounds/:id', async (req, res) => {
+  const campground = await Campground.findById(req.params.id);
+  res.status(200).json(campground);
 });
 
-app.post('/campgrounds', async (req, res) => {
+// @desc create campground
+// @route POST /api/campgrounds
+// @access Private
+app.post('api/campgrounds', async (req, res) => {
   const campground = await Campground(req.body.campground);
   await campground.save();
-  // res.redirect(`/campgrounds/${campground._id}`);
+  res.status(200).json(campground);
 });
 
-app.get('/campgrounds/:id', async (req, res) => {
+// @desc edit campground
+// @route  GET /api/campgrounds/:id/edit
+// @access Private
+app.get('/api/campgrounds/:id/edit', async (req, res) => {
   const campground = await Campground.findById(req.params.id);
-  // res.render('campgrounds/show', { campground });
 });
 
-app.get('/campgrounds/:id/edit', async (req, res) => {
-  const campground = await Campground.findById(req.params.id);
-  // res.render('campgrounds/edit', { campground });
-});
-
-app.put('/campgrounds/:id/', async (req, res) => {
+app.put('/api/campgrounds/:id/', async (req, res) => {
   const { id } = req.params;
   const campground = await Campground.findByIdAndUpdate(id, {
     ...req.body.campground,
   });
-  // res.redirect(`/campgrounds/${campground._id}`);
+  res.status(200).json(campground);
 });
 
-app.delete('/campgrounds/:id', async (req, res) => {
+app.delete('/api/campgrounds/:id', async (req, res) => {
   const { id } = req.params;
   await Campground.findByIdAndDelete(id);
-  // res.redirect(`/campgrounds`);
 });
 
 app.listen(port, () => {
