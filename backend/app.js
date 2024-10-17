@@ -4,6 +4,7 @@ const colors = require('colors');
 const methodOverride = require('method-override');
 const connectDB = require('./config/db');
 const asyncHandler = require('express-async-handler');
+const cors = require('cors');
 
 const Campground = require('./models/campground');
 
@@ -12,6 +13,7 @@ const port = process.env.PORT || 5000;
 connectDB();
 
 const app = express();
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
@@ -48,9 +50,6 @@ app.post('api/campgrounds', async (req, res) => {
 // @desc edit campground
 // @route  GET /api/campgrounds/:id/edit
 // @access Private
-app.get('/api/campgrounds/:id/edit', async (req, res) => {
-  const campground = await Campground.findById(req.params.id);
-});
 
 app.put('/api/campgrounds/:id/', async (req, res) => {
   const { id } = req.params;
@@ -60,9 +59,13 @@ app.put('/api/campgrounds/:id/', async (req, res) => {
   res.status(200).json(campground);
 });
 
+// @desc delete campground
+// @route  GET /api/campgrounds/:id
+// @access Private
 app.delete('/api/campgrounds/:id', async (req, res) => {
   const { id } = req.params;
   await Campground.findByIdAndDelete(id);
+  res.status(200).json({ message: 'User and session was deleted' });
 });
 
 app.listen(port, () => {

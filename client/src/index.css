@@ -26,8 +26,38 @@ body {
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.loadingSpinnerContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingSpinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #000 transparent #555 transparent;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @layer utilities {
@@ -45,5 +75,13 @@ body {
 
   .btn {
     @apply px-4 py-2 inline-block rounded-md text-sm text-white cursor-pointer;
+  }
+
+  .card {
+    @apply block max-w-sm p-6 border border-gray-200 rounded-md shadow cursor-pointer;
+  }
+
+  .input {
+    @apply border-gray-400 border rounded-md block py-1 px-2 text-sm;
   }
 }

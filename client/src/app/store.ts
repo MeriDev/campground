@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import campgroundReducer from './features/campgrounds/campSlice';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    campgrounds: campgroundReducer,
+  },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

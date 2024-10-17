@@ -1,28 +1,23 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import { getCamps } from '../app/features/campgrounds/campSlice';
 
 type campgroundType = {
   _id: string;
   title: string;
   location: string;
-  description: string;
 };
 
 const Dashboard = () => {
-  const [campgrounds, setCampgrounds] = useState<campgroundType[]>([]);
+  const dispatch = useDispatch();
+
+  const { campgrounds } = useSelector(state => state.campgrounds);
 
   useEffect(() => {
-    const getCampgrounds = async () => {
-      try {
-        const res = await axios.get('/api/campgrounds');
-        setCampgrounds(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getCampgrounds();
-  }, []);
+    dispatch(getCamps());
+  }, [dispatch]);
 
   return (
     <div className="container">
@@ -37,14 +32,14 @@ const Dashboard = () => {
       </div>
       <div className="grid grid-cols-3 gap-3 my-4">
         {campgrounds &&
-          campgrounds.map((campground: campgroundType) => (
+          campgrounds.map(campground => (
             <Link
               to={`/campgrounds/${campground._id}`}
               key={campground._id}
-              className="block max-w-sm p-6 border border-gray-200 rounded-md shadow cursor-pointer"
+              className="card"
             >
               <h5 className="mb-2">{campground.title}</h5>
-              <p className="">{campground.description}</p>
+              <p className="mb-2">{campground.description}</p>
             </Link>
           ))}
       </div>
