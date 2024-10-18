@@ -42,8 +42,7 @@ app.get('/api/campgrounds/:id', async (req, res) => {
 // @route POST /api/campgrounds
 // @access Private
 app.post('/api/campgrounds', async (req, res) => {
-  const { title, location } = req.body;
-  const campground = await Campground({ title, location });
+  const campground = await Campground(req.body);
   await campground.save();
   res.status(200).json(campground);
 });

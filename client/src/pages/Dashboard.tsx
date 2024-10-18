@@ -21,15 +21,10 @@ const Dashboard = () => {
 
   return (
     <div className="container">
-      <div className="flex justify-between items-baseline mt-4">
-        <h2 className="text-2xl font-bold">All Campgrounds</h2>
-        <Link
-          to="/campgrounds/add"
-          className="bg-emerald-500 text-white py-3 px-5 rounded mb-4"
-        >
-          Add New Campground
-        </Link>
-      </div>
+      <h2 className="text-emerald-600 text-2xl font-bold mt-5">
+        All Campgrounds
+      </h2>
+
       <div className="grid grid-cols-3 gap-3 my-4">
         {campgrounds &&
           campgrounds.map(campground => (
@@ -38,8 +33,20 @@ const Dashboard = () => {
               key={campground._id}
               className="card"
             >
-              <h5 className="mb-2">{campground.title}</h5>
-              <p className="mb-2">{campground.description}</p>
+              <h5 className="font-bold text-lg mb-2">{campground.title}</h5>
+              <p className="mb-2">{campground.location}</p>
+              <div className="h-[200px] overflow-hidden mb-3">
+                {campground.image && (
+                  <img
+                    src={campground.image}
+                    alt="campground image"
+                    className="block w-full"
+                  />
+                )}
+              </div>
+              <p className="text-xl font-bold">
+                {campground.price && campground.price.toFixed(2)}$
+              </p>
             </Link>
           ))}
       </div>
