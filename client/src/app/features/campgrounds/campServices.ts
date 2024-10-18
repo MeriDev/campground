@@ -17,21 +17,18 @@ const getCampgrounds = async () => {
 //Get camp
 const getCampground = async campId => {
   const response = await axios.get(API_URL + campId);
-  console.log(response);
   return response.data;
 };
 
 //Delete camps
 const deleteCampground = async campId => {
   const response = await axios.delete(API_URL + campId);
-
   return response.data;
 };
 
 //Edit camps
 const editCampground = async (campId, newCamp) => {
-  const response = await axios.put(API_URL + campId, { text: newCamp });
-
+  const response = await axios.put(API_URL + campId, newCamp);
   return response.data;
 };
 

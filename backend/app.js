@@ -41,8 +41,9 @@ app.get('/api/campgrounds/:id', async (req, res) => {
 // @desc create campground
 // @route POST /api/campgrounds
 // @access Private
-app.post('api/campgrounds', async (req, res) => {
-  const campground = await Campground(req.body.campground);
+app.post('/api/campgrounds', async (req, res) => {
+  const { title, location } = req.body;
+  const campground = await Campground({ title, location });
   await campground.save();
   res.status(200).json(campground);
 });
@@ -50,11 +51,10 @@ app.post('api/campgrounds', async (req, res) => {
 // @desc edit campground
 // @route  GET /api/campgrounds/:id/edit
 // @access Private
-
 app.put('/api/campgrounds/:id/', async (req, res) => {
   const { id } = req.params;
-  const campground = await Campground.findByIdAndUpdate(id, {
-    ...req.body.campground,
+  const campground = await Campground.findByIdAndUpdate(id, req.body, {
+    new: true,
   });
   res.status(200).json(campground);
 });

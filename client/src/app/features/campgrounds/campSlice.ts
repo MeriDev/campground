@@ -79,10 +79,10 @@ export const deleteCamp = createAsyncThunk(
 );
 
 export const editCamp = createAsyncThunk(
-  'goals/edit',
-  async ({ id, text }, thunkAPI) => {
+  'camgrounds/edit',
+  async ({ id, newCamp }, thunkAPI) => {
     try {
-      return await campServices.editCampground(id, text);
+      return await campServices.editCampground(id, newCamp);
     } catch (error) {
       const message =
         (error.response &&

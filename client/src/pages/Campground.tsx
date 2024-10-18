@@ -1,7 +1,7 @@
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getCamp } from '../app/features/campgrounds/campSlice';
+import { getCamp, deleteCamp } from '../app/features/campgrounds/campSlice';
 
 type campgroundType = {
   _id: string;
@@ -13,7 +13,6 @@ const Campground = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log(id);
 
   const { campground } = useSelector(state => state.campgrounds);
 
@@ -22,6 +21,7 @@ const Campground = () => {
   }, [dispatch]);
 
   const deleteCampHandler = async () => {
+    dispatch(deleteCamp(id));
     navigate('/Campgrounds');
   };
 
