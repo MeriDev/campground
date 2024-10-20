@@ -1,6 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+  const location = useLocation();
+
+  const nav = document.querySelector('header');
+  console.log(location.pathname);
+  if (location.pathname === '/') {
+    nav?.classList.add('bg-transparent');
+    nav?.classList.remove('bg-primary-color');
+  } else {
+    nav?.classList.add('bg-primary-color');
+    nav?.classList.remove('bg-transparent');
+  }
+
   return (
     <header className="navbar">
       <div className="logo">

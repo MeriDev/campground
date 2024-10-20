@@ -21,11 +21,11 @@ const Dashboard = () => {
 
   return (
     <div className="container">
-      <h2 className="text-emerald-600 text-2xl font-bold mt-5">
+      <h2 className="text-neutral-500 text-2xl font-bold mt-5">
         All Campgrounds
       </h2>
 
-      <div className="grid grid-cols-3 gap-3 my-4">
+      <div className="grid md:grid-cols-3 gap-3 my-4 grid-cols-1">
         {campgrounds &&
           campgrounds.map(campground => (
             <Link
@@ -33,20 +33,22 @@ const Dashboard = () => {
               key={campground._id}
               className="card"
             >
-              <h5 className="font-bold text-lg mb-2">{campground.title}</h5>
-              <p className="mb-2">{campground.location}</p>
-              <div className="h-[200px] overflow-hidden mb-3">
+              <div className="h-[300px] overflow-hidden mb-3 flex">
                 {campground.image && (
                   <img
                     src={campground.image}
                     alt="campground image"
-                    className="block w-full"
+                    className="block w-full h-full object-cover rounded-t-md"
                   />
                 )}
               </div>
-              <p className="text-xl font-bold">
-                {campground.price && campground.price.toFixed(2)}$
-              </p>
+              <div className="px-5 pb-5">
+                <h5 className="font-bold text-lg mb-2">{campground.title}</h5>
+                <p className="mb-2">{campground.location}</p>
+                <p className="text-xl font-bold">
+                  {campground.price && campground.price.toFixed(2)}$
+                </p>
+              </div>
             </Link>
           ))}
       </div>

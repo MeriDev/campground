@@ -40,12 +40,14 @@ const EditCampground = () => {
 
   return (
     <div className="m-5">
-      <h1 className="text-emerald-600 text-2xl font-bold mb-5">
+      <h1 className="text-neutral-500 text-2xl font-bold mb-5">
         Edit campground
       </h1>
-      <form className="card mb-3" onSubmit={editHandler}>
+      <form className="card mb-3 p-5" onSubmit={editHandler}>
         <div className="mb-3">
-          <label htmlFor="title">Title</label>
+          <label className="font-bold" htmlFor="title">
+            Title
+          </label>
           <input
             type="text"
             id="title"
@@ -57,7 +59,9 @@ const EditCampground = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="image">Image</label>
+          <label className="font-bold" htmlFor="image">
+            Image
+          </label>
           <input
             type="text"
             id="image"
@@ -69,7 +73,9 @@ const EditCampground = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="location">Location</label>
+          <label className="font-bold" htmlFor="location">
+            Location
+          </label>
           <input
             type="text"
             id="location"
@@ -81,7 +87,9 @@ const EditCampground = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="price">Price</label>
+          <label className="font-bold" htmlFor="price">
+            Price
+          </label>
           <input
             type="number"
             id="price"
@@ -93,7 +101,9 @@ const EditCampground = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="price">Description</label>
+          <label className="font-bold" htmlFor="price">
+            Description
+          </label>
           <textarea
             id="description"
             name="description"

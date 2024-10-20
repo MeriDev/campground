@@ -22,11 +22,34 @@ body {
   height: 100%;
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+@layer utilities {
+  .container {
+    @apply px-5 mx-auto max-w-[1200px] w-[80vw];
+  }
+
+  .navbar {
+    @apply w-full text-white flex items-center p-5;
+  }
+
+  .footer {
+    @apply bg-cyan-950 text-sm text-white/70 flex items-center justify-center p-2 mt-auto;
+  }
+
+  .btn {
+    @apply px-4 py-2 inline-block rounded-md text-sm text-white cursor-pointer;
+  }
+
+  .card {
+    @apply block max-w-xl border border-gray-200 rounded-md shadow cursor-pointer;
+  }
+
+  .input {
+    @apply w-full border-gray-400 border rounded-md block py-1 px-2 text-sm;
+  }
+
+  .glass {
+    @apply bg-white/20 border border-white/30 backdrop-blur-md shadow-custom;
+  }
 }
 
 .loadingSpinnerContainer {
@@ -57,31 +80,5 @@ body {
   }
   100% {
     transform: rotate(360deg);
-  }
-}
-
-@layer utilities {
-  .container {
-    @apply px-5 mx-auto max-w-[960px] w-full;
-  }
-
-  .navbar {
-    @apply w-full bg-primary-color text-white flex items-center p-5;
-  }
-
-  .footer {
-    @apply bg-cyan-950 text-sm text-white/70 flex items-center justify-center p-2 mt-auto;
-  }
-
-  .btn {
-    @apply px-4 py-2 inline-block rounded-md text-sm text-white cursor-pointer;
-  }
-
-  .card {
-    @apply block max-w-sm p-6 border border-gray-200 rounded-md shadow cursor-pointer;
-  }
-
-  .input {
-    @apply w-full border-gray-400 border rounded-md block py-1 px-2 text-sm;
   }
 }

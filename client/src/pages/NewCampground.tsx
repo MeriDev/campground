@@ -35,12 +35,14 @@ const NewCampground = () => {
 
   return (
     <div className="container m-5">
-      <h1 className="text-emerald-600 text-2xl font-bold mb-5">
+      <h1 className="text-neutral-500 text-2xl font-bold mb-5">
         New campground
       </h1>
-      <form className="card mb-5 " onSubmit={addHandler}>
+      <form className="card mb-5 p-5" onSubmit={addHandler}>
         <div className="mb-3">
-          <label htmlFor="title">Title</label>
+          <label className="font-bold" htmlFor="title">
+            Title
+          </label>
           <input
             type="text"
             id="title"
@@ -52,7 +54,9 @@ const NewCampground = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="image">Image</label>
+          <label className="font-bold" htmlFor="image">
+            Image
+          </label>
           <input
             type="text"
             id="image"
@@ -64,7 +68,9 @@ const NewCampground = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="location">Location</label>
+          <label className="font-bold" htmlFor="location">
+            Location
+          </label>
           <input
             type="text"
             id="location"
@@ -76,7 +82,9 @@ const NewCampground = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="price">Price</label>
+          <label className="font-bold" htmlFor="price">
+            Price
+          </label>
           <input
             type="number"
             id="price"
@@ -88,11 +96,13 @@ const NewCampground = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="price">Description</label>
+          <label className="font-bold" htmlFor="price">
+            Description
+          </label>
           <textarea
             id="description"
             name="description"
-            className="input "
+            className="input h-32 resize-none"
             placeholder="enter Description..."
             defaultValue={description}
             onChange={handleChange}
